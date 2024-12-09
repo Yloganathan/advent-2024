@@ -42,14 +42,14 @@ def get_gaurd_path():
         if(new_x < grid_height and new_y < grid_length):
             if(input[new_x][new_y] == '#'):
                 gaurd_direction = next_direction[gaurd_direction]
-                if((gaurd_position["x"], gaurd_position["y"], gaurd_direction) in gaurd_path_dir):
-                    print(gaurd_path_dir)
-                    print(f'finding {gaurd_position}, {gaurd_direction}')
-                    return gaurd_path, True
-                gaurd_path_dir.add((gaurd_position["x"], gaurd_position["y"], gaurd_direction))
                 # print(f'changing direction to {gaurd_direction} at {new_x}, {new_y}')
                 continue
             else:
+                if((new_x, new_y, gaurd_direction) in gaurd_path_dir):
+                    # print(gaurd_path_dir)
+                    # print(f'finding {gaurd_position}, {gaurd_direction}')
+                    return gaurd_path, True
+                gaurd_path_dir.add((new_x, new_y, gaurd_direction))
                 gaurd_path.add((new_x, new_y))
                 gaurd_position["x"] = new_x
                 gaurd_position["y"] = new_y
