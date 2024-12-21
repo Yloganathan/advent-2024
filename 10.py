@@ -2,8 +2,7 @@
 
 def find_incremental_path(grid, my_position, current_value, grid_length, grid_height):
     step = int(grid[my_position[0]][my_position[1]])
-    if current_value == 8 and step == 9 and my_position not in reached_9s:
-        reached_9s.append(my_position)
+    if current_value == 8 and step == 9:
         return 1
     else:
         left = (my_position[0],my_position[1] - 1) if my_position[1]-1 >=0 else None
@@ -29,5 +28,4 @@ with open("10.txt") as file:
             if input[i][j] == '0':
                 reached_9s = []
                 total += find_incremental_path(input, (i,j), 0, grid_length, grid_height)
-    # total += find_incremental_path(input, (0,2), 0, grid_length, grid_height)
     print(total)
